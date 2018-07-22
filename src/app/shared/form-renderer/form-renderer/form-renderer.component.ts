@@ -32,22 +32,25 @@ export class FormRendererComponent implements OnInit {
    }
 
    private createControl(config: FormModel): FormControl | FormArray {
-      return config.options ? this.multiControl(config) : this.singleControl(config);
+      return (config.type === 'checkbox') ? this.multiControl(config) : this.singleControl(config);
    }
    private singleControl(config: FormModel): FormControl {
       const { disabled, validations } = config;
-      return this.fb.control(this.formData[config.id]);
+      console.log(this.formData[config.id]);
+      return this.fb.control(this.formData[config.id], config.validations);
       // return this.fb.control({ disabled, '' }, validations);
    }
 
    private multiControl(config: FormModel): FormArray {
-      const arr = config.options.map(option => (this.fb.control('')));
-      // const { disabled, validations } = config;
+      const savedOptions: string[] = this.formData[config.id];
+      const arr = config.options.map(option => { 
+         option.checked = savedOptions.indexOf(option.value) > -1 ? true : false; 
+         return this.fb.control(option.checked, config.validations); 
+      });
       return this.fb.array(arr);
-      // return this.fb.control({ disabled, '' }, validations);
    }
 
    printValues(): void {
-      console.log(this.form.value);
+      console.log(this.form.controls);
    }
 }

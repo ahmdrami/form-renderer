@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Field, FormModel } from '../../form-renderer/form-schema';
-import { FormGroup } from '../../../../../../node_modules/@angular/forms';
+import { FormGroup } from '@angular/forms';
 
 @Component({
    selector: 'z-form-textarea',

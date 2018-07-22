@@ -4,13 +4,15 @@ import { FormModel, Field } from '../form-renderer/form-schema';
 import { FormButtonComponent, FormInputComponent, FormSelectComponent } from '../';
 import { FormTextareaComponent } from '../components/form-textarea/form-textarea.component';
 import { FormCheckboxComponent } from '../components/form-checkbox/form-checkbox.component';
+import { FormRadioComponent } from '../components/form-radio/form-radio.component';
 
 const components: {[ type: string]: Type<Field>} = {
   button: FormButtonComponent,
   input: FormInputComponent,
   select: FormSelectComponent,
   textarea: FormTextareaComponent,
-  checkbox: FormCheckboxComponent
+  checkbox: FormCheckboxComponent,
+  radio: FormRadioComponent
 };
 
 @Directive({
