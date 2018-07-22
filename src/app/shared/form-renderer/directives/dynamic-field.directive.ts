@@ -1,12 +1,18 @@
 import { Directive, Input, ComponentFactoryResolver, ViewContainerRef, OnInit, ComponentRef, Type } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { FormModel, Field } from '../form-renderer/form-model';
+import { FormModel, Field } from '../form-renderer/form-schema';
 import { FormButtonComponent, FormInputComponent, FormSelectComponent } from '../';
+import { FormTextareaComponent } from '../components/form-textarea/form-textarea.component';
+import { FormCheckboxComponent } from '../components/form-checkbox/form-checkbox.component';
+import { FormRadioComponent } from '../components/form-radio/form-radio.component';
 
 const components: {[ type: string]: Type<Field>} = {
   button: FormButtonComponent,
   input: FormInputComponent,
-  select: FormSelectComponent
+  select: FormSelectComponent,
+  textarea: FormTextareaComponent,
+  checkbox: FormCheckboxComponent,
+  radio: FormRadioComponent
 };
 
 @Directive({
@@ -19,7 +25,7 @@ export class DynamicFieldDirective implements OnInit {
   constructor(private resolver: ComponentFactoryResolver, private container: ViewContainerRef) {}
 
   ngOnInit() {
-    const component = components[this.config.type];
+    const component = components[this.config.control];
     const factory = this.resolver.resolveComponentFactory<any>(component);
     this.component = this.container.createComponent(factory);
     this.component.instance.config = this.config;

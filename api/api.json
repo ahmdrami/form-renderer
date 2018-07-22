@@ -1,0 +1,86 @@
+{
+   "config": [
+      {
+         "id": "name",
+         "type": "text",
+         "control": "input",
+         "label": "First Name",
+         "placeholder": "",
+         "validations": ["required"]
+      },
+      {
+         "id": "age",
+         "type": "number",
+         "control": "input",
+         "label": "Age",
+         "placeholder": "",
+         "validations": ["required"]
+      },
+      {
+         "id": "message",
+         "type": "text",
+         "control": "textarea",
+         "label": "Message",
+         "placeholder": "",
+         "validations": []
+      },
+
+      {
+         "id": "gender",
+         "type": "radio",
+         "control": "radio",
+         "label": "Gender",
+         "placeholder": "",
+         "validations": ["required"],
+         "options": [{ "id": 1, "value": "male" }, { "id": 2, "value": "female" }]
+      },
+      {
+         "id": "colour",
+         "type": "checkbox",
+         "control": "checkbox",
+         "label": "Favourite colour?",
+         "placeholder": "",
+         "validations": ["required"],
+         "options": [{ "id": 1, "value": "Blue" }, { "id": 2, "value": "Purple" }, { "id": 3, "value": "Red" }]
+      },
+      {
+         "id": "country",
+         "type": "text",
+         "control": "select",
+         "label": "Country",
+         "placeholder": "Please select a country",
+         "validations": ["required"],
+         "options": [{ "id": 1, "value": "England" }, { "id": 2, "value": "Finland" }, { "id": 3, "value": "Iceland" }]
+      },
+      {
+         "id": "city",
+         "type": "text",
+         "control": "select",
+         "label": "City",
+         "placeholder": "Please select a city",
+         "validations": ["required"],
+         "change": ["country"]
+      },
+      {
+         "id": "submit",
+         "type": "submit",
+         "control": "button",
+         "label": "Submit"
+      }
+   ],
+   "formData": {
+      "name": "John",
+      "age": "44",
+      "message": "Lorem ipsum gentloi",
+      "gender": "male",
+      "colour": ["Blue", "Purple"],
+      "country": "Finland"
+   },
+
+   "city": [
+      {  
+         "id": "England",
+         "options": [{ "id": 1, "value": "Oxford" }, { "id": 2, "value": "London" }, { "id": 3, "value": "Manchester" }]
+      }
+   ]
+}
