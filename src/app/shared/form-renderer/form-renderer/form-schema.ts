@@ -2,13 +2,13 @@ import { FormGroup, ValidatorFn } from '@angular/forms';
 
 export interface FormModel {
   disabled?: boolean;
+  control: string;
   type: string;
   label: string;
-  name: string;
+  id: string;
   placeholder?: string;
   validations?: ValidatorFn[];
   options?: any[];
-  value?: string;
 }
 
 export interface Field {

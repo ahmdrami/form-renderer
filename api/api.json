@@ -1,0 +1,52 @@
+{
+   "config": [
+      {
+         "id": "name",
+         "type": "text",
+         "control": "input",
+         "label": "First Name",
+         "placeholder": "",
+         "validation": ["required", "maxLength:25"]
+      },
+      {
+         "id": "age",
+         "type": "number",
+         "control": "input",
+         "label": "Age",
+         "placeholder": "",
+         "validation": ["required", "min:18", "max:50"]
+      },
+      {
+         "id": "message",
+         "type": "text",
+         "control": "textarea",
+         "label": "Message",
+         "placeholder": "",
+         "validation": []
+      },
+
+      {
+         "id": "gender",
+         "type": "checkbox",
+         "control": "checkbox",
+         "label": "Gender",
+         "placeholder": "",
+         "validation": ["required"],
+         "options": [{ "id": 1, "value": "male" }, { "id": 2, "value": "female" }]
+      },
+
+      {
+         "id": "submit",
+         "type": "submit",
+         "control": "button",
+         "label": "Submit"
+      }
+   ],
+   "formData": {
+      "name": "John",
+      "age": "44",
+      "message": "Lorem ipsum gentloi",
+      "gender": "male",
+      "colour": ["Blue", "Purple"]
+   }
+}
