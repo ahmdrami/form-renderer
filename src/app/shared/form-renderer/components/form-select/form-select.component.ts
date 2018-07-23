@@ -25,13 +25,13 @@ export class FormSelectComponent implements Field, OnInit {
 
    constructor(private formSvc: FormService) {}
    ngOnInit() {
-      if (this.config.change && this.config.change.length > 0) {
-         const id = this.config.change[0];
+      if (this.config.bind) {
+         const id = this.config.bind;
          const ctrl = this.group.get(id);
          ctrl.valueChanges.subscribe(value => {
             if (value) {
                this.formSvc
-                  .getOptionsData(`city?id=${value}`)
+                  .getOptionsData(`${this.config.bindUrl}?id=${value}`)
                   .pipe(take(1))
                   .subscribe((config: DynamicOptionModel) => (this.config.options = config.options));
             } this.config.options = [];

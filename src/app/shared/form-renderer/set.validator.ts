@@ -1,15 +1,13 @@
 import { OperatorFunction } from 'rxjs/interfaces';
 import { Observable } from 'rxjs/Observable';
-import { Validators } from '@angular/forms';
+import { Validators, ValidatorFn } from '@angular/forms';
 
 export function setValidators<T>(): OperatorFunction<T, T> {
    return function(source$: Observable<T>): Observable<T> {
       return new Observable<T>(observer => {
          const wrapper = {
             next: value => {
-               value
-               .filter( ({ validations }) => validations)
-               .forEach(config => (config.validations = mapValidators(config.validations)));
+               value.filter(({ validations }) => validations).forEach(config => (config.validations = mapValidators(config.validations)));
                observer.next(value);
             },
             error: observer.error
@@ -20,10 +18,20 @@ export function setValidators<T>(): OperatorFunction<T, T> {
    };
 }
 
-function mapValidators(validators: string[]): Validators[] {
-   const validations: Validators[] = [];
+function mapValidators(validators: string[]): ValidatorFn {
+   const validations: ValidatorFn[] = [];
    validators.forEach(validator => {
-      validations.push(Validators[validator]);
+      // Validations can be stored in an array as "require", "maxLength:25"
+      // Split it using the colon symbol
+      const splitValidator = validator.split(':');
+
+      splitValidator.length === 1
+         ? // If the length is 1 then we have a Validator that does not rely on a parameter e.g. required, email
+           validations.push(Validators[splitValidator[0]])
+         : // If the length is 2 then pass the second child as an argument to the Validator
+           validations.push(Validators[splitValidator[0]](splitValidator[1]));
    });
-   return validations;
+   // A validator function that returns a map of error validators.
+   // There is a composeAsync function that can be considererd when validation using a service call
+   return Validators.compose(validations);
 }

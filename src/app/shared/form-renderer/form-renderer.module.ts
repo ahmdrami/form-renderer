@@ -10,6 +10,7 @@ import { FormTextareaComponent } from './components/form-textarea/form-textarea.
 import { FormCheckboxComponent } from './components/form-checkbox/form-checkbox.component';
 import { FormRadioComponent } from './components/form-radio/form-radio.component';
 import { ErrorMessagesComponent } from './components/error-messages/error-messages.component';
+import { ErrorService } from './components/error-messages/error.service';
 
 const components = [
    FormInputComponent,
@@ -23,6 +24,7 @@ const components = [
    imports: [CommonModule, ReactiveFormsModule],
    declarations: [FormRendererComponent, ...components, DynamicFieldDirective, ErrorMessagesComponent],
    exports: [FormRendererComponent, ...components, DynamicFieldDirective],
+   providers: [ErrorService],
    entryComponents: [...components]
 })
 export class FormRendererModule {}

@@ -35,7 +35,7 @@ export class FormRendererComponent implements OnInit {
       return (config.type === 'checkbox') ? this.multiControl(config) : this.singleControl(config);
    }
    private singleControl(config: FormModel): FormControl {
-      const { disabled, validations } = config;
+      // const { validations } = config;
       console.log(this.formData[config.id]);
       return this.fb.control(this.formData[config.id], config.validations);
       // return this.fb.control({ disabled, '' }, validations);
@@ -45,9 +45,9 @@ export class FormRendererComponent implements OnInit {
       const savedOptions: string[] = this.formData[config.id];
       const arr = config.options.map(option => { 
          option.checked = savedOptions.indexOf(option.value) > -1 ? true : false; 
-         return this.fb.control(option.checked, config.validations); 
+         return this.fb.control(option.checked); 
       });
-      return this.fb.array(arr);
+      return this.fb.array(arr, config.validations);
    }
 
    printValues(): void {

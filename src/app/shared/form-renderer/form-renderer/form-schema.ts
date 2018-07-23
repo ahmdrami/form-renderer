@@ -1,15 +1,16 @@
 import { FormGroup, ValidatorFn } from '@angular/forms';
 
 export interface FormModel {
-  disabled?: boolean;
+  readonly?: boolean;
   control: string;
   type: string;
   label: string;
   id: string;
   placeholder?: string;
-  validations?: ValidatorFn[];
+  validations?: ValidatorFn;
   options?: OptionsModel[];
-  change: string;
+  bind?: string;
+  bindUrl?: string;
 }
 
 export interface Field {
@@ -20,7 +21,7 @@ export interface Field {
 export interface OptionsModel {
   id: number;
   value: string;
-  checked: boolean;
+  checked?: boolean;
 }
 
 export interface DynamicOptionModel {

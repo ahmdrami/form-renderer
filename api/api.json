@@ -6,7 +6,24 @@
          "control": "input",
          "label": "First Name",
          "placeholder": "",
+         "validations": ["required", "maxLength:25"]
+      },
+      {
+         "id": "password",
+         "type": "password",
+         "control": "input",
+         "label": "Password",
+         "placeholder": "",
+         "readonly": true,
          "validations": ["required"]
+      },
+      {
+         "id": "email",
+         "type": "email",
+         "control": "input",
+         "label": "Email",
+         "placeholder": "",
+         "validations": ["required", "email"]
       },
       {
          "id": "age",
@@ -14,7 +31,15 @@
          "control": "input",
          "label": "Age",
          "placeholder": "",
-         "validations": ["required"]
+         "validations": ["required", "pattern:([0-9]|[1-8][0-9]|9[0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])"]
+      },
+      {
+         "id": "favouriteNumber",
+         "type": "number",
+         "control": "input",
+         "label": "Favourite Number",
+         "placeholder": "",
+         "validations": ["min:1", "max:99"]
       },
       {
          "id": "message",
@@ -22,7 +47,7 @@
          "control": "textarea",
          "label": "Message",
          "placeholder": "",
-         "validations": []
+         "validations": ["maxLength:25"]
       },
 
       {
@@ -34,6 +59,7 @@
          "validations": ["required"],
          "options": [{ "id": 1, "value": "male" }, { "id": 2, "value": "female" }]
       },
+      
       {
          "id": "colour",
          "type": "checkbox",
@@ -43,6 +69,7 @@
          "validations": ["required"],
          "options": [{ "id": 1, "value": "Blue" }, { "id": 2, "value": "Purple" }, { "id": 3, "value": "Red" }]
       },
+     
       {
          "id": "country",
          "type": "text",
@@ -59,7 +86,8 @@
          "label": "City",
          "placeholder": "Please select a city",
          "validations": ["required"],
-         "change": ["country"]
+         "bind": "country",
+         "bindUrl": "cities"
       },
       {
          "id": "submit",
@@ -69,7 +97,8 @@
       }
    ],
    "formData": {
-      "name": "John",
+      "name": "John Adam",
+      "email": "john.doe@jmail.com",
       "age": "44",
       "message": "Lorem ipsum gentloi",
       "gender": "male",
@@ -77,10 +106,17 @@
       "country": "Finland"
    },
 
-   "city": [
+   "cities": [
       {  
          "id": "England",
          "options": [{ "id": 1, "value": "Oxford" }, { "id": 2, "value": "London" }, { "id": 3, "value": "Manchester" }]
       }
+   ],
+
+   "errors": [
+      { "id": "email", "error": "Incorrect email"},
+      { "id": "required", "error": "This field is required" },
+      { "id": "maxlength", "error": "Max length should be %s"}
+
    ]
 }
