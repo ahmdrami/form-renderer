@@ -37,7 +37,7 @@ export class FormRendererComponent implements OnInit {
    private singleControl(config: FormModel): FormControl {
       // const { validations } = config;
       console.log(this.formData[config.id]);
-      return this.fb.control(this.formData[config.id], config.validations);
+      return this.fb.control(this.formData[config.id], config.validatorFns);
       // return this.fb.control({ disabled, '' }, validations);
    }
 
@@ -47,7 +47,7 @@ export class FormRendererComponent implements OnInit {
          option.checked = savedOptions.indexOf(option.value) > -1 ? true : false; 
          return this.fb.control(option.checked); 
       });
-      return this.fb.array(arr, config.validations);
+      return this.fb.array(arr, config.validatorFns);
    }
 
    printValues(): void {

@@ -19,14 +19,14 @@ export class ErrorMessagesComponent implements OnInit, OnDestroy {
    @Input() group: FormGroup;
    @Input() config: FormModel;
    subscriber: Subscription;
-   errors: any[];
+   errors: string[];
    constructor(private errorSvc: ErrorService, private cd: ChangeDetectorRef) {}
 
    ngOnInit() {
       if (this.config.validations) {
          const control = this.group.controls[this.config.id];
          this.subscriber = control.valueChanges.pipe(debounceTime(300)).subscribe(() => {
-            this.errors = this.errorSvc.mapErrors(control.errors);
+            this.errors = this.errorSvc.mapErrors(control.errors, this.config.validations);
             this.cd.detectChanges();
          });
       }

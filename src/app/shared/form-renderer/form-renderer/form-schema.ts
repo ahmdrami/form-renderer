@@ -7,7 +7,8 @@ export interface FormModel {
   label: string;
   id: string;
   placeholder?: string;
-  validations?: ValidatorFn;
+  validations?: string[];
+  validatorFns?: ValidatorFn;
   options?: OptionsModel[];
   bind?: string;
   bindUrl?: string;

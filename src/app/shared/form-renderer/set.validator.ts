@@ -7,7 +7,7 @@ export function setValidators<T>(): OperatorFunction<T, T> {
       return new Observable<T>(observer => {
          const wrapper = {
             next: value => {
-               value.filter(({ validations }) => validations).forEach(config => (config.validations = mapValidators(config.validations)));
+               value.filter(({ validations }) => validations).forEach(config => (config.validatorFns = mapValidators(config.validations)));
                observer.next(value);
             },
             error: observer.error

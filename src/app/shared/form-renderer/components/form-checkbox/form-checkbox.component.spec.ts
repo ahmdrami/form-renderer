@@ -11,7 +11,7 @@ function multiControl(config: FormModel): FormArray {
       option.checked = savedOptions.indexOf(option.value) > -1 ? true : false;
       return new FormControl(option.checked);
    });
-   return new FormArray(arr, config.validations);
+   return new FormArray(arr, config.validatorFns);
 }
 
 describe('FormCheckboxComponent', () => {

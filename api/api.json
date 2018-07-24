@@ -116,7 +116,10 @@
    "errors": [
       { "id": "email", "error": "Incorrect email"},
       { "id": "required", "error": "This field is required" },
-      { "id": "maxlength", "error": "Max length should be %s"}
+      { "id": "maxlength", "error": "Max length should be %s"},
+      { "id": "minLength", "error": "Min length should be %s"},
+      { "id": "max", "error": "Max number should be %s"},
+      { "id": "min", "error": "Min number should be %s"}
 
    ]
 }
