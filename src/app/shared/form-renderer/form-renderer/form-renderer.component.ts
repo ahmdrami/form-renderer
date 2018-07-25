@@ -6,8 +6,8 @@ import { FormModel } from './form-schema';
    template: `
     <div class="container mt-5">
          <form [formGroup]="form" (ngSubmit)="printValues()">
-            <ng-container *ngFor="let field of config" zDynamicField [config]="field" [group]="form">
-         </ng-container>
+            <ng-template *ngFor="let field of config" zDynamicField [config]="field" [group]="form">
+         </ng-template>
       </form>
     </div>
   `,
