@@ -1,4 +1,53 @@
 {
+   "screen": [
+      {
+         "id": "section",
+         "type": "normal",
+         "column": 2,
+         "fields": [
+            {
+               "id": "name",
+               "type": "text",
+               "control": "input",
+               "label": "First Name",
+               "placeholder": "",
+               "validations": ["required", "maxLength:25"]
+            },
+            {
+               "id": "password",
+               "type": "password",
+               "control": "input",
+               "label": "Password",
+               "placeholder": "",
+               "readonly": true,
+               "validations": ["required"]
+            }
+         ]
+      },
+      {
+         "id": "section",
+         "type": "normal",
+         "fields": [
+            {
+               "id": "email",
+               "type": "email",
+               "control": "input",
+               "label": "Email",
+               "placeholder": "",
+               "validations": ["required", "email"]
+            },
+            {
+               "id": "age",
+               "type": "number",
+               "control": "input",
+               "label": "Age",
+               "placeholder": "",
+               "validations": ["required", "pattern:([0-9]|[1-8][0-9]|9[0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])"]
+            }
+         ]
+
+      }
+   ],
    "config": [
       {
          "id": "name",

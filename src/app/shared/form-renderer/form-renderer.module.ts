@@ -11,6 +11,7 @@ import { FormCheckboxComponent } from './components/form-checkbox/form-checkbox.
 import { FormRadioComponent } from './components/form-radio/form-radio.component';
 import { ErrorMessagesComponent } from './components/error-messages/error-messages.component';
 import { ErrorService } from './components/error-messages/error.service';
+import { SectionNormalComponent } from './components/section-normal/section-normal.component';
 
 const components = [
    FormInputComponent,
@@ -22,7 +23,7 @@ const components = [
 ];
 @NgModule({
    imports: [CommonModule, ReactiveFormsModule],
-   declarations: [FormRendererComponent, ...components, DynamicFieldDirective, ErrorMessagesComponent],
+   declarations: [FormRendererComponent, ...components, DynamicFieldDirective, ErrorMessagesComponent, SectionNormalComponent],
    exports: [FormRendererComponent, ...components, DynamicFieldDirective],
    providers: [ErrorService],
    entryComponents: [...components]
