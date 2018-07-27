@@ -3,6 +3,7 @@
       {
          "id": "section",
          "type": "normal",
+         "control": "section",
          "column": 2,
          "fields": [
             {
@@ -27,6 +28,7 @@
       {
          "id": "section",
          "type": "normal",
+         "control": "section",
          "fields": [
             {
                "id": "email",
@@ -46,6 +48,14 @@
             }
          ]
 
+      },
+      {
+         "id": "favouriteNumber",
+         "type": "number",
+         "control": "input",
+         "label": "Favourite Number",
+         "placeholder": "",
+         "validations": ["min:1", "max:99"]
       }
    ],
    "config": [

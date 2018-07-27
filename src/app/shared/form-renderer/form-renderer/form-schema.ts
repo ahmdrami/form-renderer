@@ -1,5 +1,6 @@
 import { FormGroup, ValidatorFn } from '@angular/forms';
 
+
 export interface FormModel {
   readonly?: boolean;
   control: string;
@@ -12,6 +13,7 @@ export interface FormModel {
   options?: OptionsModel[];
   bind?: string;
   bindUrl?: string;
+  fields?: FormModel[];
 }
 
 export interface Field {

@@ -5,6 +5,7 @@ import { FormButtonComponent, FormInputComponent, FormSelectComponent } from '..
 import { FormTextareaComponent } from '../components/form-textarea/form-textarea.component';
 import { FormCheckboxComponent } from '../components/form-checkbox/form-checkbox.component';
 import { FormRadioComponent } from '../components/form-radio/form-radio.component';
+import { SectionNormalComponent } from '../components/section-normal/section-normal.component';
 
 const components: {[ type: string]: Type<Field>} = {
   button: FormButtonComponent,
@@ -12,7 +13,8 @@ const components: {[ type: string]: Type<Field>} = {
   select: FormSelectComponent,
   textarea: FormTextareaComponent,
   checkbox: FormCheckboxComponent,
-  radio: FormRadioComponent
+  radio: FormRadioComponent,
+  section: SectionNormalComponent
 };
 
 @Directive({
