@@ -42,6 +42,8 @@ export class FormService {
    createControl(config: FormModel, formData: FormModel): FormControl | FormArray {
       return (config.type === 'checkbox') ? this.multiControl(config, formData) : this.singleControl(config, formData);
    }
+
+   
    private singleControl(config: FormModel, formData: FormModel): FormControl {
       return new FormControl(formData[config.id], config.validatorFns);
    }
@@ -54,6 +56,9 @@ export class FormService {
       });
       return new FormArray(arr, config.validatorFns);
    }
+
+
+   
 
 
 }

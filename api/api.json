@@ -127,7 +127,43 @@
          "placeholder": "",
          "validations": ["maxLength:25"]
       },
-      
+      {
+         "id": "startDate",
+         "type": "single",
+         "control": "datepicker",
+         "label": "Start date",
+         "placeholder": "",
+         "validations": ["required"],
+         "config": {
+           "maxDate": "2019-02-16T00:00:00.000Z",
+           "minDate": "2018-07-30T00:00:00.000Z"
+         }
+      },
+     
+      {
+         "id": "endDate",
+         "type": "single",
+         "control": "datepicker",
+         "label": "End date",
+         "placeholder": "",
+         "validations": ["required"],
+         "config": {
+            "maxDate": "2019-02-16T00:00:00.000Z",
+            "minDate": "2018-07-30T00:00:00.000Z"
+          } 
+      },
+      {
+         "id": "absenceDate",
+         "type": "range",
+         "control": "datepicker",
+         "label": "Range date",
+         "placeholder": "",
+         "validations": ["required"],
+         "config": {
+            "maxDate": "2019-02-16T00:00:00.000Z",
+            "minDate": "2018-07-30T00:00:00.000Z"
+          } 
+      },
       {
          "id": "submit",
          "type": "submit",

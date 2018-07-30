@@ -16,6 +16,7 @@ export interface FormModel {
   bindUrl?: string;
   fields?: FormModel[];
   cols?: number;
+  config?: { [key: string]: string };
 }
 
 export interface Field {
