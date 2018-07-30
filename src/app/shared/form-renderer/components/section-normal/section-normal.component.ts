@@ -1,22 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { Field, FormModel } from '../../form-renderer/form-schema';
 import { FormGroup } from '@angular/forms';
 
+let incr = 0;
 @Component({
   selector: 'z-section-normal',
   template: `
-    <section>
-      <ng-template *ngFor="let field of config.fields" zDynamicField [config]="field" [group]="group">
-      </ng-template>
-    </section>
+    <ng-template *ngFor="let field of config.fields" zDynamicField [config]="field" [group]="group">
+    </ng-template>
   `,
-  styles: []
+  styles: [`
+    :host {
+      display: grid;
+      grid-gap: 1em;
+    }
+  `]
 })
-export class SectionNormalComponent implements Field {
+export class SectionNormalComponent implements Field, OnInit {
   group: FormGroup;
   config: FormModel;
-
-  constructor() { }
-
-
+  sectionNumber = incr++;
+  @HostBinding('style.grid-template-columns') gridCols;
+  
+  
+  ngOnInit() {
+    this.gridCols = this.config ? `1fr `.repeat(this.config.cols) : '1fr';
+  }
 }

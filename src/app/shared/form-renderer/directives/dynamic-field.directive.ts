@@ -1,4 +1,4 @@
-import { Directive, Input, ComponentFactoryResolver, ViewContainerRef, OnInit, ComponentRef, Type } from '@angular/core';
+import { Directive, Input, ComponentFactoryResolver, ViewContainerRef, OnInit, ComponentRef, Type, HostBinding } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormModel, Field } from '../form-renderer/form-schema';
 import { FormButtonComponent, FormInputComponent, FormSelectComponent } from '../';
@@ -23,6 +23,7 @@ const components: {[ type: string]: Type<Field>} = {
 export class DynamicFieldDirective implements OnInit {
   @Input() config: FormModel;
   @Input() group: FormGroup;
+
   component: ComponentRef<any>;
   constructor(private resolver: ComponentFactoryResolver, private container: ViewContainerRef) {}
 

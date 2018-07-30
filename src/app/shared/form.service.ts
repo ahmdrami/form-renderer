@@ -43,10 +43,7 @@ export class FormService {
       return (config.type === 'checkbox') ? this.multiControl(config, formData) : this.singleControl(config, formData);
    }
    private singleControl(config: FormModel, formData: FormModel): FormControl {
-      // const { validations } = config;
-      console.log(formData[config.id]);
       return new FormControl(formData[config.id], config.validatorFns);
-      // return this.fb.control({ disabled, '' }, validations);
    }
 
    private multiControl(config: FormModel, formData: FormModel): FormArray {

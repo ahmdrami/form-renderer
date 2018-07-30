@@ -5,7 +5,8 @@ import { FormGroup } from '@angular/forms';
 @Component({
    selector: 'z-form-radio',
    template: `
-   <div class="form-group" [formGroup]="group">
+   <div class="form-field" [formGroup]="group">
+      <label>{{ config.label }}</label>
       <div class="custom-control custom-radio" 
          *ngFor="let option of config.options; let i = index">
          <input 
@@ -19,10 +20,12 @@ import { FormGroup } from '@angular/forms';
       </div>
    </div>
   `,
-   styles: []
+   host: {
+      ['class']: 'form-field'
+   }
 })
 export class FormRadioComponent implements Field {
+   fieldClass: string;
    group: FormGroup;
    config: FormModel;
-
 }

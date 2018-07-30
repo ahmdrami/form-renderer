@@ -1,4 +1,5 @@
 import { FormGroup, ValidatorFn } from '@angular/forms';
+import { HostBinding } from '@angular/core';
 
 
 export interface FormModel {
@@ -14,6 +15,7 @@ export interface FormModel {
   bind?: string;
   bindUrl?: string;
   fields?: FormModel[];
+  cols?: number;
 }
 
 export interface Field {
