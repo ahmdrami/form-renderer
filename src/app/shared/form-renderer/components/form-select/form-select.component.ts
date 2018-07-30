@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormModel, Field, OptionsModel, DynamicOptionModel } from '../../form-renderer/form-schema';
 import { FormService } from '../../../form.service';
 import { take } from 'rxjs/operators';
 @Component({
-   selector: '[z-form-select]',
+   selector: 'z-form-select',
    template: `
-    <div [formGroup]="group" class="form-group">
+    <div [formGroup]="group" class="form-field">
       <label>{{ config.label }}</label>
       <select
          class="form-control"
@@ -17,7 +17,9 @@ import { take } from 'rxjs/operators';
       <z-error-messages [group]="group" [config]="config"></z-error-messages>
       </div>
   `,
-   styles: []
+   host: {
+      ['class']: 'form-field'
+   }
 })
 export class FormSelectComponent implements Field, OnInit {
    config: FormModel;
@@ -34,7 +36,8 @@ export class FormSelectComponent implements Field, OnInit {
                   .getOptionsData(`${this.config.bindUrl}?id=${value}`)
                   .pipe(take(1))
                   .subscribe((config: DynamicOptionModel) => (this.config.options = config.options));
-            } this.config.options = [];
+            }
+            this.config.options = [];
          });
       }
    }
