@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
-import { FormModel } from '../../form-renderer/form-schema';
+import { FieldModel } from '../../form-renderer/form-schema';
 import { By } from '@angular/platform-browser';
 import { FormSelectComponent } from './form-select.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
@@ -11,7 +11,7 @@ describe('FormSelectComponent', () => {
    const mockFormService = jasmine.createSpyObj(['getOptionsData']);
    let component: FormSelectComponent;
    let fixture: ComponentFixture<FormSelectComponent>;
-   let config: FormModel;
+   let config: FieldModel;
 
    beforeEach(async(() => {
       TestBed.configureTestingModule({

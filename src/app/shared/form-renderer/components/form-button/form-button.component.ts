@@ -1,20 +1,27 @@
-import { Component, Input } from '@angular/core';
-import { FormModel, Field } from '../../form-renderer/form-schema';
+import { Component } from '@angular/core';
+import { FieldModel, ComponentConfig } from '../../form-renderer/form-schema';
 import { FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'z-form-button',
-  template: `
-    <div [formGroup]="group" class="form-field">
-      <button class="btn btn-primary" type="submit"> {{ config.label }}</button>
-    </div>
-  `,
-  host: {
-    ['class']: 'form-field'
-  }
-})
-export class FormButtonComponent implements Field {
-  @Input() group: FormGroup;
-  config: FormModel;
+   selector: 'z-form-button',
+   template: `
 
+  <ng-container [ngSwitch]="config.type">
+    <button *ngSwitchCase="'submit'" class="btn btn-primary" [type]="config.type"> {{ config.label }} </button>
+    <button *ngSwitchCase="'cancel'" (click)="goBack($event)" class="btn btn-default">Cancel</button>
+     
+  </ng-container>
+  `,
+   host: {
+      ['class']: 'form-button'
+   }
+})
+export class FormButtonComponent implements ComponentConfig {
+   group: FormGroup;
+   config: FieldModel;
+
+   goBack($event: Event): void {
+     $event.preventDefault();
+     console.log('Back pressed');
+   }
 }

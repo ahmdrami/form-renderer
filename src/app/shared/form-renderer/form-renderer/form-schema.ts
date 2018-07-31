@@ -1,8 +1,21 @@
 import { FormGroup, ValidatorFn } from '@angular/forms';
-import { HostBinding } from '@angular/core';
 
 
-export interface FormModel {
+export interface SectionModel {
+  id: string;
+  fields: FieldModel[];
+  config: SectionConfigModel;
+  type: string;
+}
+
+interface SectionConfigModel {
+  collapsible?: boolean;
+  cols: string;
+  title: string;
+  bgColor?: string;
+}
+
+export interface FieldModel {
   readonly?: boolean;
   control: string;
   type: string;
@@ -14,14 +27,19 @@ export interface FormModel {
   options?: OptionsModel[];
   bind?: string;
   bindUrl?: string;
-  fields?: FormModel[];
-  cols?: number;
-  config?: { [key: string]: string };
+  config?: FieldConfigModel;
 }
 
-export interface Field {
+
+export interface ComponentConfig {
   group: FormGroup;
-  config: FormModel;
+  config: FieldModel | SectionModel;
+}
+
+// 
+interface FieldConfigModel {
+  maxDate: string;
+  minDate: string;
 }
 
 export interface OptionsModel {

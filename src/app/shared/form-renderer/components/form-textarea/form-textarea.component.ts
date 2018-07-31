@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Field, FormModel } from '../../form-renderer/form-schema';
+import { ComponentConfig, FieldModel } from '../../form-renderer/form-schema';
 import { FormGroup } from '@angular/forms';
 
 @Component({
@@ -18,7 +18,7 @@ import { FormGroup } from '@angular/forms';
       ['class']: 'form-field'
    }
 })
-export class FormTextareaComponent implements Field {
+export class FormTextareaComponent implements ComponentConfig {
    group: FormGroup;
-   config: FormModel;
+   config: FieldModel;
 }

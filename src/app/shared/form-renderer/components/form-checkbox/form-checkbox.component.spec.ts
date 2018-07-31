@@ -2,10 +2,10 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FormCheckboxComponent } from './form-checkbox.component';
 import { ReactiveFormsModule, FormArray, FormGroup, FormControl } from '@angular/forms';
-import { FormModel } from '../../form-renderer/form-schema';
+import { FieldModel } from '../../form-renderer/form-schema';
 import { By } from '@angular/platform-browser';
 
-function multiControl(config: FormModel): FormArray {
+function multiControl(config: FieldModel): FormArray {
    const savedOptions = ['Blue'];
    const arr = config.options.map(option => {
       option.checked = savedOptions.indexOf(option.value) > -1 ? true : false;
@@ -17,7 +17,7 @@ function multiControl(config: FormModel): FormArray {
 describe('FormCheckboxComponent', () => {
    let component: FormCheckboxComponent;
    let fixture: ComponentFixture<FormCheckboxComponent>;
-   let config: FormModel;
+   let config: FieldModel;
 
    beforeEach(async(() => {
       TestBed.configureTestingModule({

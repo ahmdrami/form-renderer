@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { Field, FormModel } from '../../form-renderer/form-schema';
+import { ComponentConfig, FieldModel } from '../../form-renderer/form-schema';
 import { FormGroup } from '@angular/forms';
 import { NgbDateParserFormatter, NgbDateStruct, NgbCalendar, NgbDatepicker, NgbInputDatepicker } from '@ng-bootstrap/ng-bootstrap';
 
@@ -54,9 +54,9 @@ export const after = (one: NgbDateStruct, two: NgbDateStruct) =>
       `
    ]
 })
-export class FormDatepickerComponent implements Field, OnInit {
+export class FormDatepickerComponent implements ComponentConfig, OnInit {
    group: FormGroup;
-   config: FormModel;
+   config: FieldModel;
 
    // Date Config
    startDate: NgbDateStruct;
@@ -100,12 +100,15 @@ export class FormDatepickerComponent implements Field, OnInit {
       if (!this.fromDate && !this.toDate) {
          this.fromDate = date;
       } else if (this.fromDate && !this.toDate && after(date, this.fromDate)) {
+         // Assign to date and close the Date picker
          this.toDate = date;
          dp.close();
       } else {
          this.toDate = null;
          this.fromDate = date;
       }
+
+      console.log(this.fromDate, this.toDate);
 
    }
 

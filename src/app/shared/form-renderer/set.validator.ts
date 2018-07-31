@@ -1,7 +1,6 @@
 import { OperatorFunction } from 'rxjs/interfaces';
 import { Observable } from 'rxjs/Observable';
 import { Validators, ValidatorFn } from '@angular/forms';
-import { FormModel } from './form-renderer/form-schema';
 
 export function setValidators<T>(): OperatorFunction<T, T> {
    return function(source$: Observable<T>): Observable<T> {
@@ -19,12 +18,12 @@ export function setValidators<T>(): OperatorFunction<T, T> {
    };
 }
 
-function hasValidations(field: FormModel): boolean {
-   if (field.fields) {
-      field.fields.forEach(f => hasValidations(f));
+function hasValidations(config: any): boolean {
+   if (config.fields) {
+    config.fields.forEach(f => hasValidations(f));
    }
-   if (field.validations) {
-      field.validatorFns = mapValidators(field.validations);
+   if (config.validations) {
+    config.validatorFns = mapValidators(config.validations);
    }
    return true;
 }

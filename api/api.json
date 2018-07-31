@@ -1,10 +1,8 @@
 {
    "screen": [
       {
-         "id": "section",
-         "type": "normal",
-         "control": "section",
-         "cols": 2,
+         "id": "personalInfo",
+         "type": "section",
          "fields": [
             {
                "id": "name",
@@ -23,13 +21,16 @@
                "validations": ["required", "maxLength:25"]
             }
             
-         ]
+         ],
+         "config": {
+           "bgColor": "#f3f3f3",
+           "cols": 2,
+           "title": "Personal Info"
+         }
       },
       {
-         "id": "section",
-         "type": "normal",
-         "control": "section",
-         "cols": 3,
+         "id": "contactDetails",
+         "type": "section",
          "fields": [
             {
                "id": "email",
@@ -57,17 +58,17 @@
                "placeholder": "",
                "validations": ["required", "pattern:([0-9]|[1-8][0-9]|9[0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])"]
             }
-         ]
+         ],
+         "config": {
+            "cols": 4,
+            "title": "Contact Details"
+         }
 
       },
       {
-         "id": "section",
-         "type": "normal",
-         "control": "section",
-         "cols": 2,
+         "id": "address",
+         "type": "section",
          "fields": [
-            
-      
             {
                "id": "gender",
                "type": "radio",
@@ -107,9 +108,26 @@
                "bind": "country",
                "bindUrl": "cities"
             }
-         ] 
+         ],
+         "config": {
+           "title": "Address",
+           "cols": 2,
+           "bgColor": "#fbfae0"
+         } 
       },
 
+      {
+        "id": "absenceDate",
+        "type": "range",
+        "control": "datepicker",
+        "label": "Range date",
+        "placeholder": "",
+        "validations": ["required"],
+        "config": {
+           "maxDate": "2019-02-16T00:00:00.000Z",
+           "minDate": "2018-07-30T00:00:00.000Z"
+         } 
+      },
 
       {
          "id": "favouriteNumber",
@@ -152,23 +170,18 @@
             "minDate": "2018-07-30T00:00:00.000Z"
           } 
       },
-      {
-         "id": "absenceDate",
-         "type": "range",
-         "control": "datepicker",
-         "label": "Range date",
-         "placeholder": "",
-         "validations": ["required"],
-         "config": {
-            "maxDate": "2019-02-16T00:00:00.000Z",
-            "minDate": "2018-07-30T00:00:00.000Z"
-          } 
-      },
+     
       {
          "id": "submit",
          "type": "submit",
          "control": "button",
          "label": "Submit"
+      },
+      {
+         "id": "cancel",
+         "type": "cancel",
+         "control": "button",
+         "label": "Cancel"
       }
    ],
    "formData": {

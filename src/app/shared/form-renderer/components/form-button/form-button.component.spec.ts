@@ -1,11 +1,11 @@
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { FormButtonComponent } from './form-button.component';
 import { ReactiveFormsModule, FormGroup } from '@angular/forms';
-import { FormModel } from '../../form-renderer/form-schema';
+import { FieldModel } from '../../form-renderer/form-schema';
 import { By } from '@angular/platform-browser';
 
 describe('Form Button Component', () => {
-   let config: FormModel;
+   let config: FieldModel;
    let component: FormButtonComponent;
    let fixture: ComponentFixture<FormButtonComponent>;
    beforeEach(() => {

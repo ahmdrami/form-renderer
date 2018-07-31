@@ -1,6 +1,6 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { FormModel, Field, OptionsModel, DynamicOptionModel } from '../../form-renderer/form-schema';
+import { FieldModel, ComponentConfig, DynamicOptionModel } from '../../form-renderer/form-schema';
 import { FormService } from '../../../form.service';
 import { take } from 'rxjs/operators';
 @Component({
@@ -21,8 +21,8 @@ import { take } from 'rxjs/operators';
       ['class']: 'form-field'
    }
 })
-export class FormSelectComponent implements Field, OnInit {
-   config: FormModel;
+export class FormSelectComponent implements ComponentConfig, OnInit {
+   config: FieldModel;
    group: FormGroup;
 
    constructor(private formSvc: FormService) {}

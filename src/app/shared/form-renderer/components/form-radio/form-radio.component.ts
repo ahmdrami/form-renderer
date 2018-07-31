@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Field, FormModel } from '../../form-renderer/form-schema';
+import { ComponentConfig, FieldModel } from '../../form-renderer/form-schema';
 import { FormGroup } from '@angular/forms';
 
 @Component({
@@ -24,8 +24,8 @@ import { FormGroup } from '@angular/forms';
       ['class']: 'form-field'
    }
 })
-export class FormRadioComponent implements Field {
+export class FormRadioComponent implements ComponentConfig {
    fieldClass: string;
    group: FormGroup;
-   config: FormModel;
+   config: FieldModel;
 }

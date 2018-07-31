@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormInputComponent } from './form-input.component';
-import { FormModel } from '../../form-renderer/form-schema';
+import { FieldModel } from '../../form-renderer/form-schema';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
@@ -8,7 +8,7 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 describe('FormInputComponent', () => {
    let component: FormInputComponent;
    let fixture: ComponentFixture<FormInputComponent>;
-   let config: FormModel;
+   let config: FieldModel;
 
    beforeEach(async(() => {
       TestBed.configureTestingModule({

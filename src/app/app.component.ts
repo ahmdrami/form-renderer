@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormModel } from './shared/form-renderer/form-renderer/form-schema';
+import { FieldModel, SectionModel } from './shared/form-renderer/form-renderer/form-schema';
 import { FormService } from './shared/form.service';
 import { combineLatest } from 'rxjs/observable/combineLatest';
 @Component({
@@ -10,7 +10,7 @@ import { combineLatest } from 'rxjs/observable/combineLatest';
   <router-outlet></router-outlet>`
 })
 export class AppComponent implements OnInit {
-   config: FormModel[];
+   config: FieldModel[] | SectionModel[];
    formData: any;
    httpCalls;
 

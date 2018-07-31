@@ -1,14 +1,14 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FormTextareaComponent } from './form-textarea.component';
-import { FormModel } from '../../form-renderer/form-schema';
+import { FieldModel } from '../../form-renderer/form-schema';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
 describe('FormTextareaComponent', () => {
    let component: FormTextareaComponent;
    let fixture: ComponentFixture<FormTextareaComponent>;
-   let config: FormModel;
+   let config: FieldModel;
    beforeEach(async(() => {
       TestBed.configureTestingModule({
          imports: [ReactiveFormsModule],

@@ -1,6 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { FormModel, Field } from '../../form-renderer/form-schema';
+import { FieldModel, ComponentConfig } from '../../form-renderer/form-schema';
 
 @Component({
    selector: 'z-form-input',
@@ -21,7 +21,7 @@ import { FormModel, Field } from '../../form-renderer/form-schema';
       ['class']: 'form-field'
    }
 })
-export class FormInputComponent implements Field {
-   @Input() group: FormGroup;
-   config: FormModel;
+export class FormInputComponent implements ComponentConfig {
+   group: FormGroup;
+   config: FieldModel;
 }

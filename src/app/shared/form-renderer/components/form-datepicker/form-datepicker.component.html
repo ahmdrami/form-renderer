@@ -1,8 +1,9 @@
-
+<!--  Singe date picker -->
 <div class="form-group" *ngIf="config.type === 'single'; else dateRangePicker">
+   <label> {{ config.label }} </label>
    <div class="input-group">
-      <input class="form-control" placeholder="yyyy-mm-dd" ngbDatepicker #d="ngbDatepicker" [autoClose]="autoClose" (dateSelect)="onDateSelection($event, d)" [startDate]="startDate"
-         [maxDate]="maxDate" [minDate]="minDate" [displayMonths]="displayMonths" >
+      <input class="form-control" placeholder="yyyy-mm-dd" ngbDatepicker #d="ngbDatepicker" [autoClose]="autoClose" (dateSelect)="onDateSelection($event, d)"
+         [startDate]="startDate" [maxDate]="maxDate" [minDate]="minDate" [displayMonths]="displayMonths">
       <div class="input-group-append">
          <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
             icon
@@ -12,27 +13,25 @@
 </div>
 
 <!-- Range date picker -->
-
-
-   
-<ng-template #dateRangePicker class="form-group">
-   
-   <div class="input-group">
-         <input class="form-control" placeholder="yyyy-mm-dd" ngbDatepicker #d="ngbDatepicker" [autoClose]="autoClose" (dateSelect)="onDateSelection($event, d)" [startDate]="startDate"
-            [maxDate]="maxDate" [minDate]="minDate" [displayMonths]="displayMonths" [dayTemplate]="t">
+<ng-template #dateRangePicker>
+   <div class="form-group">
+      <label> {{ config.label }} </label>
+      <div class="input-group">
+         <input class="form-control" placeholder="yyyy-mm-dd" ngbDatepicker #d="ngbDatepicker" [autoClose]="autoClose" (dateSelect)="onDateSelection($event, d)"
+            [startDate]="startDate" [maxDate]="maxDate" [minDate]="minDate" [displayMonths]="displayMonths" [dayTemplate]="t">
          <div class="input-group-append">
             <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
                icon
             </button>
          </div>
       </div>
-   
 
-   <ng-template #t let-date="date" let-focused="focused" >
-      <span class="custom-day" [class.focused]="focused" [class.range]="isFrom(date) || isTo(date) || isInside(date) || isHovered(date)"
-         [class.faded]="isHovered(date) || isInside(date)" (mouseenter)="hoveredDate = date" (mouseleave)="hoveredDate = null">
-         {{ date.day }}
-      </span>
-   </ng-template>
 
+      <ng-template #t let-date="date" let-focused="focused">
+         <span class="custom-day" [class.focused]="focused" [class.range]="isFrom(date) || isTo(date) || isInside(date) || isHovered(date)"
+            [class.faded]="isHovered(date) || isInside(date)" (mouseenter)="hoveredDate = date" (mouseleave)="hoveredDate = null">
+            {{ date.day }}
+         </span>
+      </ng-template>
+   </div>
 </ng-template>

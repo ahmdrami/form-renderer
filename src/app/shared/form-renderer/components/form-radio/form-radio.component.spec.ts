@@ -2,13 +2,13 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FormRadioComponent } from './form-radio.component';
 import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
-import { FormModel } from '../../form-renderer/form-schema';
+import { FieldModel } from '../../form-renderer/form-schema';
 import { By } from '@angular/platform-browser';
 
 describe('FormRadioComponent', () => {
    let component: FormRadioComponent;
    let fixture: ComponentFixture<FormRadioComponent>;
-   let config: FormModel;
+   let config: FieldModel;
 
    beforeEach(async(() => {
       TestBed.configureTestingModule({

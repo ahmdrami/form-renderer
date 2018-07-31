@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { FormModel } from './form-schema';
+import { FieldModel } from './form-schema';
 import { FormService } from '../../form.service';
 @Component({
    selector: 'z-form-renderer',
@@ -15,7 +15,7 @@ import { FormService } from '../../form.service';
    styles: []
 })
 export class FormRendererComponent implements OnInit {
-   @Input() config: FormModel[] = [];
+   @Input() config: FieldModel[] = [];
    @Input() formData: any;
 
    form: FormGroup;
