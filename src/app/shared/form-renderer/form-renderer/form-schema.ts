@@ -28,6 +28,8 @@ export interface FieldModel {
   bind?: string;
   bindUrl?: string;
   config?: FieldConfigModel;
+  html?: string;
+  action?: string;
 }
 
 

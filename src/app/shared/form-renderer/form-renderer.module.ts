@@ -14,6 +14,9 @@ import { ErrorService } from './components/error-messages/error.service';
 import { SectionNormalComponent } from './components/section-normal/section-normal.component';
 import { FormDatepickerComponent } from './components/form-datepicker/form-datepicker.component';
 import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
+import { HtmlContentComponent } from './components/html-content/html-content.component';
+import { SanitizePipe } from './pipes/sanitize.pipe';
+import { ChevronComponent } from '../components/chevron/chevron.component';
 
 const components = [
    FormInputComponent,
@@ -23,11 +26,12 @@ const components = [
    FormCheckboxComponent,
    FormRadioComponent,
    SectionNormalComponent,
-   FormDatepickerComponent
+   FormDatepickerComponent,
+   HtmlContentComponent
 ];
 @NgModule({
    imports: [CommonModule, ReactiveFormsModule, NgbDatepickerModule.forRoot()],
-   declarations: [FormRendererComponent, ...components, DynamicFieldDirective, ErrorMessagesComponent],
+   declarations: [FormRendererComponent, ...components, DynamicFieldDirective, ErrorMessagesComponent, SanitizePipe, ChevronComponent ],
    exports: [FormRendererComponent, ...components, DynamicFieldDirective],
    providers: [ErrorService],
    entryComponents: [...components]

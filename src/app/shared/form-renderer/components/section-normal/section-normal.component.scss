@@ -1,0 +1,32 @@
+:host {
+   display: block;
+   overflow: hidden;
+   border-radius: 5px;
+}
+
+
+.accordion {
+   
+   &--button {
+      border: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      text-align: left;
+      padding: 8px 1em;
+      cursor: pointer;
+      font-size: 18px;
+      margin: 0;
+      background: #f3f3f3;
+      font-weight: 500;
+      border-bottom: 1px solid #d6d6d6;
+   }
+
+   &--content {
+      display: grid;
+      grid-gap: 1em;
+      padding: 1em;
+   }
+}
+

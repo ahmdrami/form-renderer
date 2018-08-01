@@ -25,7 +25,8 @@
          "config": {
            "bgColor": "#f3f3f3",
            "cols": 2,
-           "title": "Personal Info"
+           "title": "Personal Info",
+           "collapsible": true
          }
       },
       {
@@ -130,6 +131,12 @@
       },
 
       {
+         "id": "company",
+         "type": "text",
+         "control": "html",
+         "label": "Company"
+      },
+      {
          "id": "favouriteNumber",
          "type": "number",
          "control": "input",
@@ -173,14 +180,14 @@
      
       {
          "id": "submit",
-         "type": "submit",
-         "control": "button",
+         "action": "submit",
+         "type": "button",
          "label": "Submit"
       },
       {
          "id": "cancel",
-         "type": "cancel",
-         "control": "button",
+         "action": "cancel",
+         "type": "button",
          "label": "Cancel"
       }
    ],
@@ -191,7 +198,8 @@
       "message": "Lorem ipsum gentloi",
       "gender": "male",
       "colour": ["Blue", "Purple"],
-      "country": "Finland"
+      "country": "Finland",
+      "company": "<h4>I am H4 tag rendered here</h4>"
    },
 
    "cities": [

@@ -7,6 +7,7 @@ import { FormCheckboxComponent } from '../components/form-checkbox/form-checkbox
 import { FormRadioComponent } from '../components/form-radio/form-radio.component';
 import { SectionNormalComponent } from '../components/section-normal/section-normal.component';
 import { FormDatepickerComponent } from '../components/form-datepicker/form-datepicker.component';
+import { HtmlContentComponent } from '../components/html-content/html-content.component';
 
 const components: { [type: string]: Type<ComponentConfig> } = {
    button: FormButtonComponent,
@@ -16,7 +17,8 @@ const components: { [type: string]: Type<ComponentConfig> } = {
    checkbox: FormCheckboxComponent,
    radio: FormRadioComponent,
    section: SectionNormalComponent,
-   datepicker: FormDatepickerComponent
+   datepicker: FormDatepickerComponent,
+   html: HtmlContentComponent
 };
 
 @Directive({
@@ -30,8 +32,10 @@ export class DynamicFieldDirective implements OnInit {
    constructor(private resolver: ComponentFactoryResolver, private container: ViewContainerRef) {}
 
    ngOnInit() {
-      // config.control = fields
-      // config.type = sections
+      /**
+       * config.control can be fields, widgets, html
+       * config.type when rendering sections e.g. accordion
+       */
       const component = components[ this.config.control ? this.config.control : this.config.type ];
       const factory = this.resolver.resolveComponentFactory<any>(component);
       this.component = this.container.createComponent(factory);

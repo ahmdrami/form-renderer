@@ -1,0 +1,58 @@
+%chevron-line-base {
+    stroke-width: 5px;
+    stroke-linecap: round;
+    transition: transform 0.3s, stroke 0.3s;
+}
+
+$upColor: #000000;
+$downColor: #5e5e5e;
+
+.chevron {
+    display: flex;
+    margin-left: .25em;
+    &__line1 {
+        @extend %chevron-line-base;
+        transform-origin: 50px 50px;
+    }
+
+    &__line2 {
+        @extend %chevron-line-base;
+        transform-origin: 50px 50px;
+    }
+
+    &--down {
+        .chevron {
+            &__container {
+                transition: transform 0.3s;
+                transform: translateY(13px);
+            }
+
+            &__line1 {
+                stroke: $downColor;
+                transform: rotate(40deg);
+            }
+            &__line2 {
+                stroke: $downColor;
+                transform: rotate(-40deg);
+            }
+        }
+    }
+
+    &--up {
+        @extend .chevron--down;
+
+        .chevron {
+            &__container {
+                transform: translateY(-13px);
+            }
+            &__line1 {
+                stroke: $upColor;
+                transform: rotate(-40deg);
+            }
+            &__line2 {
+                stroke: $upColor;
+                transform: rotate(40deg);
+            }
+        }
+    }
+}

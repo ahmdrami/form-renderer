@@ -6,9 +6,9 @@ import { FormGroup } from '@angular/forms';
    selector: 'z-form-button',
    template: `
 
-  <ng-container [ngSwitch]="config.type">
-    <button *ngSwitchCase="'submit'" class="btn btn-primary" [type]="config.type"> {{ config.label }} </button>
-    <button *ngSwitchCase="'cancel'" (click)="goBack($event)" class="btn btn-default">Cancel</button>
+  <ng-container [ngSwitch]="config.action">
+    <button *ngSwitchCase="'submit'" class="btn btn-primary" [type]="config.action"> {{ config.label }} </button>
+    <button *ngSwitchCase="'cancel'" (click)="goBack($event)" class="btn btn-default"> {{ config.label }} </button>
      
   </ng-container>
   `,
