@@ -17,8 +17,8 @@ import { trigger, state, transition, animate, style } from '@angular/animations'
       </ng-template>
 
       <section 
-         [hidden]="config.config.collapsible && !toggle" 
-         [@toggleState]="toggleStatee"
+         *ngIf="!toggle"
+         [@toggleState]
          class="accordion--content"  
          [style.grid-template-columns]="config?.config?.cols">
          <ng-template *ngFor="let field of config.fields" zDynamicField [config]="field" [group]="group"></ng-template>
@@ -27,15 +27,13 @@ import { trigger, state, transition, animate, style } from '@angular/animations'
    styleUrls: ['./section-normal.component.scss'],
    animations: [
       trigger('toggleState', [
-        state('inactive', style({
-          height: 0
-        })),
-        state('active',   style({
-          height: '*'
-        })),
-        transition('inactive <=> active', animate('.25s ease-in')),
+         transition(':enter', [style({ height: 0 }), animate('.3s cubic-bezier(0.16,0.56,0.72,0.79)', style({ height: '*' }))]),
+         transition(':leave', [
+            style({ height: '*' }),
+            animate('.3s cubic-bezier(0.16,0.56,0.72,0.79)', style({ height: 0, 'padding-top': 0, 'padding-bottom': 0 }))
+         ])
       ])
-    ]
+   ]
 })
 export class SectionNormalComponent implements ComponentConfig, OnInit {
    group: FormGroup;
@@ -47,6 +45,8 @@ export class SectionNormalComponent implements ComponentConfig, OnInit {
    ngOnInit() {
       this.config.config.cols = this.config ? `1fr `.repeat(+this.config.config.cols) : '1fr';
       this.bgColor = this.config ? this.config.config.bgColor : 'transparent';
+
+      console.log(this.config.config);
    }
 
    handleToggle(): void {
