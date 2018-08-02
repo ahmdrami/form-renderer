@@ -29,6 +29,6 @@ export class FormRendererComponent implements OnInit {
    }
 
    printValues(): void {
-      console.log(this.form.value);
+      console.log(this.form.controls['email'].errors);
    }
 }

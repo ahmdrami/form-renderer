@@ -1,4 +1,4 @@
-import { FormGroup, ValidatorFn } from '@angular/forms';
+import { FormGroup, ValidatorFn, AsyncValidatorFn } from '@angular/forms';
 
 
 export interface SectionModel {
@@ -22,8 +22,9 @@ export interface FieldModel {
   label: string;
   id: string;
   placeholder?: string;
-  validations?: string[];
+  validations?: FieldValidationModel[];
   validatorFns?: ValidatorFn;
+  asyncValidatorFns?: AsyncValidatorFn[];
   options?: OptionsModel[];
   bind?: string;
   bindUrl?: string;
@@ -44,6 +45,14 @@ interface FieldConfigModel {
   minDate: string;
 }
 
+export interface FieldValidationModel {
+  id: string; 
+  type: string;
+  arg?: string;
+  validationUrl?: string;
+  feedbackParams?: string[];
+  query?: string;
+}
 export interface OptionsModel {
   id: number;
   value: string;

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { FieldValidationModel } from '../../form-renderer/form-schema';
 @Injectable()
 export class ErrorService {
    errors: any[];
@@ -7,17 +8,17 @@ export class ErrorService {
       this.http.get('api/errors').subscribe((errors: any[]) => (this.errors = errors));
    }
 
-   mapErrors(controlErrors: {}, validations: string[]): string[] {
+   mapErrors(controlErrors: {}, validations: FieldValidationModel[]): string[] {
       const arr = [];
       if (controlErrors) {
+         console.log(controlErrors, 'control errors');
          // Get all the keys from the control error property then push it to the arr
          Object.keys(controlErrors).forEach(key => {
-            let params: any  = validations.find(id => id.split(':')[0].toLowerCase() === key);
-            params = params.split(':');
-            if (params.lenght === 1) {
-               arr.push(this.getErrorMessage(key));
+            const { feedbackParams } = validations.find( ({ id }) => id.toLowerCase() === key.toLowerCase());
+            if (feedbackParams) {
+               arr.push(this.replaceParams(key, feedbackParams));
             } else {
-               arr.push(this.replaceParams(key, params));
+               arr.push(this.getErrorMessage(key));
             }
          });
       }
@@ -28,18 +29,17 @@ export class ErrorService {
    private replaceParams(key: string, params: string[]): string {
 
       let str: string | any = this.getErrorMessage(key);
-
       let i = 0;
       while (/%s/.test(str)) {
-         str = str.replace('%s', params[(i++) + 1]);
+         str = str.replace('%s', params[(i++)]);
          return str;
       }
 
       return str;
    }
 
-   private getErrorMessage(key: string): { id, error } {
-      const { error } = this.errors.find( ({ id }) =>  id === key);
+   private getErrorMessage(key: string): string {
+      const { error } = this.errors.find( ({ id }) =>  id.toLowerCase() === key.toLowerCase());
       return error;
    }
 }

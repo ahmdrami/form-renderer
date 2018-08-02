@@ -4,7 +4,7 @@
 
 $red: #F44336;
 
-input.ng-invalid:not(.ng-untouched) {
+input.ng-dirty.ng-invalid:not(.ng-untouched) {
    border-color: $red;
    &:focus {
       border-color: $red;

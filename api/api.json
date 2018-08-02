@@ -10,7 +10,18 @@
                "control": "input",
                "label": "First Name",
                "placeholder": "",
-               "validations": ["required", "maxLength:25"]
+               "validations": [
+                  {
+                     "id": "required",
+                     "type": "native"
+                  },
+                  {
+                     "id": "maxLength",
+                     "type": "native",
+                     "arg": 25,
+                     "feedbackParams": [25]
+                  }
+               ]
             },
             {
                "id": "lastName",
@@ -18,15 +29,25 @@
                "control": "input",
                "label": "Last Name",
                "placeholder": "",
-               "validations": ["required", "maxLength:25"]
+               "validations": [
+                  {
+                     "id": "required",
+                     "type": "native"
+                  },
+                  {
+                     "id": "maxLength",
+                     "type": "native",
+                     "arg": 25,
+                     "feedbackParams": [25]
+                  }
+               ]
             }
-            
          ],
          "config": {
-           "bgColor": "#f3f3f3",
-           "cols": 2,
-           "title": "Personal Info",
-           "collapsible": true
+            "bgColor": "#f3f3f3",
+            "cols": 2,
+            "title": "Personal Info",
+            "collapsible": true
          }
       },
       {
@@ -39,7 +60,22 @@
                "control": "input",
                "label": "Email",
                "placeholder": "",
-               "validations": ["required", "email"]
+               "validations": [
+                  {
+                     "id": "required",
+                     "type": "native"
+                  },
+                  {
+                     "id": "email",
+                     "type": "native"
+                  },
+                  {
+                     "id": "emailDuplicate",
+                     "type": "async",
+                     "validationUrl": "emailList",
+                     "query": "id" 
+                  }
+               ]
             },
 
             {
@@ -49,7 +85,17 @@
                "label": "Password",
                "placeholder": "",
                "readonly": true,
-               "validations": ["required"]
+               "validations": [
+                  {
+                     "id": "required",
+                     "type": "native"
+                  },
+                  {
+                     "id": "maxLength",
+                     "type": "native",
+                     "arg": 25
+                  }
+               ]
             },
             {
                "id": "age",
@@ -57,14 +103,23 @@
                "control": "input",
                "label": "Age",
                "placeholder": "",
-               "validations": ["required", "pattern:([0-9]|[1-8][0-9]|9[0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])"]
+               "validations": [
+                  {
+                     "type": "required"
+                  },
+                  {
+                     "id": "pattern",
+                     "type": "native",
+                     "arg": "([0-9]|[1-8][0-9]|9[0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])",
+                     "feedbackParams": [0, 255]
+                  }
+               ]
             }
          ],
          "config": {
             "cols": 4,
             "title": "Contact Details"
          }
-
       },
       {
          "id": "address",
@@ -76,27 +131,42 @@
                "control": "radio",
                "label": "Gender",
                "placeholder": "",
-               "validations": ["required"],
+               "validations": [
+                  {
+                     "id": "required",
+                     "type": "native"
+                  }
+               ],
                "options": [{ "id": 1, "value": "male" }, { "id": 2, "value": "female" }]
             },
-            
+
             {
                "id": "colour",
                "type": "checkbox",
                "control": "checkbox",
                "label": "Favourite colour?",
                "placeholder": "",
-               "validations": ["required"],
+               "validations": [
+                  {
+                     "id": "required",
+                     "type": "native"
+                  }
+               ],
                "options": [{ "id": 1, "value": "Blue" }, { "id": 2, "value": "Purple" }, { "id": 3, "value": "Red" }]
             },
-           
+
             {
                "id": "country",
                "type": "text",
                "control": "select",
                "label": "Country",
                "placeholder": "Please select a country",
-               "validations": ["required"],
+               "validations": [
+                  {
+                     "id": "required",
+                     "type": "native"
+                  }
+               ],
                "options": [{ "id": 1, "value": "England" }, { "id": 2, "value": "Finland" }, { "id": 3, "value": "Iceland" }]
             },
             {
@@ -105,29 +175,39 @@
                "control": "select",
                "label": "City",
                "placeholder": "Please select a city",
-               "validations": ["required"],
+               "validations": [
+                  {
+                     "id": "required",
+                     "type": "native"
+                  }
+               ],
                "bind": "country",
                "bindUrl": "cities"
             }
          ],
          "config": {
-           "title": "Address",
-           "cols": 2,
-           "bgColor": "#fbfae0"
-         } 
+            "title": "Address",
+            "cols": 2,
+            "bgColor": "#fbfae0"
+         }
       },
 
       {
-        "id": "absenceDate",
-        "type": "range",
-        "control": "datepicker",
-        "label": "Range date",
-        "placeholder": "",
-        "validations": ["required"],
-        "config": {
-           "maxDate": "2019-02-16T00:00:00.000Z",
-           "minDate": "2018-07-30T00:00:00.000Z"
-         } 
+         "id": "absenceDate",
+         "type": "range",
+         "control": "datepicker",
+         "label": "Range date",
+         "placeholder": "",
+         "validations": [
+            {
+               "id": "required",
+               "type": "native"
+            }
+         ],
+         "config": {
+            "maxDate": "2019-02-16T00:00:00.000Z",
+            "minDate": "2018-07-30T00:00:00.000Z"
+         }
       },
 
       {
@@ -142,7 +222,18 @@
          "control": "input",
          "label": "Favourite Number",
          "placeholder": "",
-         "validations": ["min:1", "max:99"]
+         "validations": [
+            {
+               "id": "min",
+               "type": "native",
+               "arg": 18
+            },
+            {
+               "id": "max",
+               "type": "native",
+               "arg": 99
+            }
+         ]
       },
       {
          "id": "message",
@@ -150,7 +241,13 @@
          "control": "textarea",
          "label": "Message",
          "placeholder": "",
-         "validations": ["maxLength:25"]
+         "validations": [
+            {
+               "id": "maxLength",
+               "type": "native",
+               "arg": 25
+            }
+         ]
       },
       {
          "id": "startDate",
@@ -158,26 +255,36 @@
          "control": "datepicker",
          "label": "Start date",
          "placeholder": "",
-         "validations": ["required"],
+         "validations": [
+            {
+               "id": "required",
+               "type": "native"
+            }
+         ],
          "config": {
-           "maxDate": "2019-02-16T00:00:00.000Z",
-           "minDate": "2018-07-30T00:00:00.000Z"
+            "maxDate": "2019-02-16T00:00:00.000Z",
+            "minDate": "2018-07-30T00:00:00.000Z"
          }
       },
-     
+
       {
          "id": "endDate",
          "type": "single",
          "control": "datepicker",
          "label": "End date",
          "placeholder": "",
-         "validations": ["required"],
+         "validations": [
+            {
+               "id": "required",
+               "type": "native"
+            }
+         ],
          "config": {
             "maxDate": "2019-02-16T00:00:00.000Z",
             "minDate": "2018-07-30T00:00:00.000Z"
-          } 
+         }
       },
-     
+
       {
          "id": "submit",
          "action": "submit",
@@ -193,7 +300,6 @@
    ],
    "formData": {
       "name": "John Adam",
-      "email": "john.doe@jmail.com",
       "age": "44",
       "message": "Lorem ipsum gentloi",
       "gender": "male",
@@ -203,19 +309,21 @@
    },
 
    "cities": [
-      {  
+      {
          "id": "England",
          "options": [{ "id": 1, "value": "Oxford" }, { "id": 2, "value": "London" }, { "id": 3, "value": "Manchester" }]
       }
    ],
 
    "errors": [
-      { "id": "email", "error": "Incorrect email"},
+      { "id": "email", "error": "Incorrect email" },
       { "id": "required", "error": "This field is required" },
-      { "id": "maxlength", "error": "Max length should be %s"},
-      { "id": "minLength", "error": "Min length should be %s"},
-      { "id": "max", "error": "Max number should be %s"},
-      { "id": "min", "error": "Min number should be %s"}
+      { "id": "maxLength", "error": "Max length should be %s" },
+      { "id": "minLength", "error": "Min length should be %s" },
+      { "id": "max", "error": "Max number should be %s" },
+      { "id": "min", "error": "Min number should be %s" },
+      { "id": "emailDuplicate", "error": "Email already in use" }
+   ],
 
-   ]
+   "emailList": [{ "id": "john@zift.com" }, { "id": "doe@zift.com" }, { "id": "aaron@zift.com" }, { "id": "liz@zift.com" }]
 }

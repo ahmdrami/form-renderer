@@ -17,6 +17,7 @@ import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import { HtmlContentComponent } from './components/html-content/html-content.component';
 import { SanitizePipe } from './pipes/sanitize.pipe';
 import { ChevronComponent } from '../components/chevron/chevron.component';
+import { CustomValidatorService } from './validators/custom-validator.service';
 
 const components = [
    FormInputComponent,
@@ -33,7 +34,7 @@ const components = [
    imports: [CommonModule, ReactiveFormsModule, NgbDatepickerModule.forRoot()],
    declarations: [FormRendererComponent, ...components, DynamicFieldDirective, ErrorMessagesComponent, SanitizePipe, ChevronComponent ],
    exports: [FormRendererComponent, ...components, DynamicFieldDirective],
-   providers: [ErrorService],
+   providers: [ErrorService, CustomValidatorService],
    entryComponents: [...components]
 })
 export class FormRendererModule {}

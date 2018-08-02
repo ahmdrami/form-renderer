@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { FieldModel, DynamicOptionModel, SectionModel } from './form-renderer/form-renderer/form-schema';
 import { HttpClient } from '@angular/common/http';
-import { setValidators } from './form-renderer/set.validator';
+import { setValidators } from './form-renderer/validators/set.validator';
 import { map } from '../../../node_modules/rxjs/operators';
 import { FormGroup, FormControl, FormArray } from '@angular/forms';
 
@@ -28,7 +28,7 @@ export class FormService {
       config.forEach(fieldConfig => {
          const { id, control, fields } = fieldConfig;
          // If fieldConfig control is HTML then assign
-         // form data if exists to the fieldConfig
+         // form data if exists on the fieldConfig
          if (control === 'html' && formData[id]) {
             return (fieldConfig.html = formData[id]);
          }
@@ -49,7 +49,7 @@ export class FormService {
    }
 
    private singleControl(config: FieldModel, formData: FieldModel): FormControl {
-      return new FormControl(formData[config.id], config.validatorFns);
+      return new FormControl(formData[config.id], config.validatorFns, config.asyncValidatorFns);
    }
 
    private multiControl(config: FieldModel, formData: FieldModel): FormArray {
