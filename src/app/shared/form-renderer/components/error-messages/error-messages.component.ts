@@ -40,7 +40,7 @@ export class ErrorMessagesComponent implements OnInit, OnDestroy {
         }
          const control = this.group.controls[this.config.id];
          this.subscriber = control.valueChanges.pipe(
-          debounceTime(500)
+          debounceTime(500),
           ).subscribe(() => {
             this.errors = this.errorSvc.mapErrors(control.errors, this.config.validations);
             this.cd.detectChanges();
