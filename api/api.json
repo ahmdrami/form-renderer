@@ -27,6 +27,7 @@
       {
          "id": "section",
          "type": "normal",
+         "column": 3,
          "fields": [
             {
                "id": "email",

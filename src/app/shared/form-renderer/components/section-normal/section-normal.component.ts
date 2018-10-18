@@ -1,19 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'z-section-normal',
-  template: `
-    <p>
-      section-normal works!
-    </p>
+   selector: 'z-section-normal',
+   template: `
+   <section>
+      <ng-template *ngFor="let field of config" zDynamicField [config]="field" [group]="form"></ng-template>
+   </section>
   `,
-  styles: []
+   styles: []
 })
 export class SectionNormalComponent implements OnInit {
+   config;
+   form;
+   constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+   ngOnInit() {}
 }

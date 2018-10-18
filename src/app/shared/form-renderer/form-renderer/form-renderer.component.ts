@@ -35,10 +35,8 @@ export class FormRendererComponent implements OnInit {
       return (config.type === 'checkbox') ? this.multiControl(config) : this.singleControl(config);
    }
    private singleControl(config: FormModel): FormControl {
-      // const { validations } = config;
       console.log(this.formData[config.id]);
       return this.fb.control(this.formData[config.id], config.validatorFns);
-      // return this.fb.control({ disabled, '' }, validations);
    }
 
    private multiControl(config: FormModel): FormArray {
