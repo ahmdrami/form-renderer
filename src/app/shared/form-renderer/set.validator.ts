@@ -1,13 +1,14 @@
 import { OperatorFunction } from 'rxjs/interfaces';
 import { Observable } from 'rxjs/Observable';
 import { Validators, ValidatorFn } from '@angular/forms';
+import { FormModel } from './form-renderer/form-schema';
 
 export function setValidators<T>(): OperatorFunction<T, T> {
    return function(source$: Observable<T>): Observable<T> {
       return new Observable<T>(observer => {
          const wrapper = {
             next: value => {
-               value.filter(({ validations }) => validations).forEach(config => (config.validatorFns = mapValidators(config.validations)));
+               value.forEach(config => hasValidations(config));
                observer.next(value);
             },
             error: observer.error
@@ -18,6 +19,15 @@ export function setValidators<T>(): OperatorFunction<T, T> {
    };
 }
 
+function hasValidations(field: FormModel): boolean {
+   if (field.fields) {
+      field.fields.forEach(f => hasValidations(f));
+   }
+   if (field.validations) {
+      field.validatorFns = mapValidators(field.validations);
+   }
+   return true;
+}
 function mapValidators(validators: string[]): ValidatorFn {
    const validations: ValidatorFn[] = [];
    validators.forEach(validator => {

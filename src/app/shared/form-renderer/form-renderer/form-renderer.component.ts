@@ -1,13 +1,14 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, FormArray } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { FormModel } from './form-schema';
+import { FormService } from '../../form.service';
 @Component({
    selector: 'z-form-renderer',
    template: `
     <div class="container mt-5">
-         <form [formGroup]="form" (ngSubmit)="printValues()">
-            <ng-template *ngFor="let field of config" zDynamicField [config]="field" [group]="form">
-         </ng-template>
+        <form [formGroup]="form" (ngSubmit)="printValues()">
+          <ng-template *ngFor="let field of config" zDynamicField [config]="field" [group]="form">
+          </ng-template>
       </form>
     </div>
   `,
@@ -16,36 +17,15 @@ import { FormModel } from './form-schema';
 export class FormRendererComponent implements OnInit {
    @Input() config: FormModel[] = [];
    @Input() formData: any;
+
    form: FormGroup;
-   constructor(private fb: FormBuilder) {}
+
+   constructor(private formService: FormService) {}
 
    ngOnInit() {
+      this.form = this.formService.createGroup(this.config, this.formData);
       console.log(this.config);
-      this.form = this.createGroup();
-   }
-
-   private createGroup(): FormGroup {
-      const group = this.fb.group({});
-      this.config.filter(({ control }) => control !== 'button')
-         .forEach(control => group.addControl(control.id, this.createControl(control)));
-      return group;
-   }
-
-   private createControl(config: FormModel): FormControl | FormArray {
-      return (config.type === 'checkbox') ? this.multiControl(config) : this.singleControl(config);
-   }
-   private singleControl(config: FormModel): FormControl {
-      console.log(this.formData[config.id]);
-      return this.fb.control(this.formData[config.id], config.validatorFns);
-   }
-
-   private multiControl(config: FormModel): FormArray {
-      const savedOptions: string[] = this.formData[config.id];
-      const arr = config.options.map(option => { 
-         option.checked = savedOptions.indexOf(option.value) > -1 ? true : false; 
-         return this.fb.control(option.checked); 
-      });
-      return this.fb.array(arr, config.validatorFns);
+      console.log(this.form);
    }
 
    printValues(): void {

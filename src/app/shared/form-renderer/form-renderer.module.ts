@@ -19,11 +19,12 @@ const components = [
    FormButtonComponent,
    FormTextareaComponent,
    FormCheckboxComponent,
-   FormRadioComponent
+   FormRadioComponent,
+   SectionNormalComponent
 ];
 @NgModule({
    imports: [CommonModule, ReactiveFormsModule],
-   declarations: [FormRendererComponent, ...components, DynamicFieldDirective, ErrorMessagesComponent, SectionNormalComponent],
+   declarations: [FormRendererComponent, ...components, DynamicFieldDirective, ErrorMessagesComponent, ],
    exports: [FormRendererComponent, ...components, DynamicFieldDirective],
    providers: [ErrorService],
    entryComponents: [...components]

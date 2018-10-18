@@ -3,7 +3,8 @@
       {
          "id": "section",
          "type": "normal",
-         "column": 2,
+         "control": "section",
+         "cols": 2,
          "fields": [
             {
                "id": "name",
@@ -14,20 +15,21 @@
                "validations": ["required", "maxLength:25"]
             },
             {
-               "id": "password",
-               "type": "password",
+               "id": "lastName",
+               "type": "text",
                "control": "input",
-               "label": "Password",
+               "label": "Last Name",
                "placeholder": "",
-               "readonly": true,
-               "validations": ["required"]
+               "validations": ["required", "maxLength:25"]
             }
+            
          ]
       },
       {
          "id": "section",
          "type": "normal",
-         "column": 3,
+         "control": "section",
+         "cols": 3,
          "fields": [
             {
                "id": "email",
@@ -36,6 +38,16 @@
                "label": "Email",
                "placeholder": "",
                "validations": ["required", "email"]
+            },
+
+            {
+               "id": "password",
+               "type": "password",
+               "control": "input",
+               "label": "Password",
+               "placeholder": "",
+               "readonly": true,
+               "validations": ["required"]
             },
             {
                "id": "age",
@@ -47,42 +59,58 @@
             }
          ]
 
-      }
-   ],
-   "config": [
-      {
-         "id": "name",
-         "type": "text",
-         "control": "input",
-         "label": "First Name",
-         "placeholder": "",
-         "validations": ["required", "maxLength:25"]
       },
       {
-         "id": "password",
-         "type": "password",
-         "control": "input",
-         "label": "Password",
-         "placeholder": "",
-         "readonly": true,
-         "validations": ["required"]
+         "id": "section",
+         "type": "normal",
+         "control": "section",
+         "cols": 2,
+         "fields": [
+            
+      
+            {
+               "id": "gender",
+               "type": "radio",
+               "control": "radio",
+               "label": "Gender",
+               "placeholder": "",
+               "validations": ["required"],
+               "options": [{ "id": 1, "value": "male" }, { "id": 2, "value": "female" }]
+            },
+            
+            {
+               "id": "colour",
+               "type": "checkbox",
+               "control": "checkbox",
+               "label": "Favourite colour?",
+               "placeholder": "",
+               "validations": ["required"],
+               "options": [{ "id": 1, "value": "Blue" }, { "id": 2, "value": "Purple" }, { "id": 3, "value": "Red" }]
+            },
+           
+            {
+               "id": "country",
+               "type": "text",
+               "control": "select",
+               "label": "Country",
+               "placeholder": "Please select a country",
+               "validations": ["required"],
+               "options": [{ "id": 1, "value": "England" }, { "id": 2, "value": "Finland" }, { "id": 3, "value": "Iceland" }]
+            },
+            {
+               "id": "city",
+               "type": "text",
+               "control": "select",
+               "label": "City",
+               "placeholder": "Please select a city",
+               "validations": ["required"],
+               "bind": "country",
+               "bindUrl": "cities"
+            }
+         ] 
       },
-      {
-         "id": "email",
-         "type": "email",
-         "control": "input",
-         "label": "Email",
-         "placeholder": "",
-         "validations": ["required", "email"]
-      },
-      {
-         "id": "age",
-         "type": "number",
-         "control": "input",
-         "label": "Age",
-         "placeholder": "",
-         "validations": ["required", "pattern:([0-9]|[1-8][0-9]|9[0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])"]
-      },
+
+
       {
          "id": "favouriteNumber",
          "type": "number",
@@ -99,46 +127,7 @@
          "placeholder": "",
          "validations": ["maxLength:25"]
       },
-
-      {
-         "id": "gender",
-         "type": "radio",
-         "control": "radio",
-         "label": "Gender",
-         "placeholder": "",
-         "validations": ["required"],
-         "options": [{ "id": 1, "value": "male" }, { "id": 2, "value": "female" }]
-      },
       
-      {
-         "id": "colour",
-         "type": "checkbox",
-         "control": "checkbox",
-         "label": "Favourite colour?",
-         "placeholder": "",
-         "validations": ["required"],
-         "options": [{ "id": 1, "value": "Blue" }, { "id": 2, "value": "Purple" }, { "id": 3, "value": "Red" }]
-      },
-     
-      {
-         "id": "country",
-         "type": "text",
-         "control": "select",
-         "label": "Country",
-         "placeholder": "Please select a country",
-         "validations": ["required"],
-         "options": [{ "id": 1, "value": "England" }, { "id": 2, "value": "Finland" }, { "id": 3, "value": "Iceland" }]
-      },
-      {
-         "id": "city",
-         "type": "text",
-         "control": "select",
-         "label": "City",
-         "placeholder": "Please select a city",
-         "validations": ["required"],
-         "bind": "country",
-         "bindUrl": "cities"
-      },
       {
          "id": "submit",
          "type": "submit",
